@@ -102,6 +102,7 @@ def arg_parse():
         global ECS_CLUSTER_NAME
         ECS_CLUSTER_NAME = args.cluster
         services = json.loads(args.services)
+        print("{} {}".format(ECS_CLUSTER_NAME,services))
         print('-'*88)
         print("Welcome to the AWS ecs client!")
         for service in services:
