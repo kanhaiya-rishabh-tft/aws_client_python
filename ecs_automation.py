@@ -99,6 +99,7 @@ def arg_parse():
             type= str
         )
         args = parser.parse_args()
+        print("Args : " + args)
         global ECS_CLUSTER_NAME
         ECS_CLUSTER_NAME = args.cluster
         services = json.loads(args.services)
