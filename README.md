@@ -35,3 +35,4 @@ Go to Build > Execute shell
 
     python3 ./ecs_automation.py --cluster $CLUSTER_NAME --services "${SERVICES_LIST}"
 
+[Reference for python](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ecs.html)
