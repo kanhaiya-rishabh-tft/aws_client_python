@@ -1,11 +1,31 @@
 # aws_client_python
 Python script to update services in AWS ECS.
 
-Parameter Required in Jenkins Freestyle Job.
+Commands available to run python script
+
+    List All Services
+    python ./ecs_service_automation.py -c <cluster_name> list-services
+
+    for e.g.
+    python ./ecs_service_automation.py -c test_cluster list-services
+
+    Upgrade Services
+    python ./ecs_service_automation.py -c <cluster_name> upgrade 
+
+    for e.g.
+    python ./ecs_service_automation.py -c test_cluster upgrade 
+
+    Downgrade Service
+    python ./ecs_service_automation.py -c <cluster_name> downgrade
+
+    python ./ecs_service_automation.py -c test_cluster downgrade
+
+Parameter Required in Jenkins pipeline to build.
 
     1. CLUSTER_NAME
-    2. SERVICES_LIST
-    3. AWS_DEFAULT_REGION
+    2. UPGRADE
+    3. DOWNGRADE
+    4. AWS_DEFAULT_REGION
 
 **CLUSTER_NAME :** Name of ECS Cluster
     
@@ -13,26 +33,14 @@ Parameter Required in Jenkins Freestyle Job.
         CLUSTER_NAME=Test_Cluster
 
 
-**SERVICES_LIST :** List of Services to be update using this script. Value should be in JSON format.
+**UPGRADE :** Enable to upgrade (Boolean).
 
-    Syntax
-        SERVICES_LIST={ "service_name1" : #_of_count }
-    for e.g.
-        SERVICES_LIST={ "nginx" : 1, "ubuntu" : 3 }
+**DOWNGRADE :** Enable to downgrade (Boolean).
 
 **AWS_DEFAULT_REGION :** Provide region of ECS cluster installed.
 
     For e.g.
         AWS_DEFAULT_REGION=ap-south-1
 
-**Configure AWS Credentials**
-Add AWS Credentials in pipeline to create connectivity of Jenkins and AWS.
-    > Build Environment > Use secret text(s) or file(s) > Select AWS Credentials
-
-## Jenkins Freestyle Job shell Syntax
-
-Go to Build > Execute shell
-
-    python3 ./ecs_automation.py --cluster $CLUSTER_NAME --services "${SERVICES_LIST}"
 
 [Reference for python script](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ecs.html)
