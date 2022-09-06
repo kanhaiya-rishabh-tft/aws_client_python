@@ -21,7 +21,7 @@
     }
     stage('Upgrade Services') {
         when {
-            ${UPGRADE} == true
+         expression{ ${UPGRADE} == true }
         }
         steps {
             withCredentials([[
@@ -36,7 +36,7 @@
     }
     stage('Downgrade Services') {
         when {
-            ${DOWNGRADE} == true
+         expression{ ${DOWNGRADE} == true }
         }
         steps {
             withCredentials([[
