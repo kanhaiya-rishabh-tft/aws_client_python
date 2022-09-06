@@ -62,7 +62,7 @@ def update_ecs_service(service,d_count):
             response = client.update_service(
                 cluster= ECS_CLUSTER_NAME,
                 service= service ,
-                taskDefinition=ECS_TASK_DEFINITION,
+#                 taskDefinition=ECS_TASK_DEFINITION,
                 desiredCount=d_count
             )
             if response.get('ResponseMetadata')['HTTPStatusCode'] == 200:
